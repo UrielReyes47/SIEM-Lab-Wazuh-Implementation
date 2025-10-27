@@ -43,10 +43,22 @@ The primary objective was to deploy a comprehensive Security Information and Eve
 
     > ![](image6.jpg)
 
-## 📸 Evidence of Detection (FOTO 6 - *Pending*)
+## 📸 6. Threat Detection and Log Analysis (FOTO 6)
 
-* **Goal:** The final piece of evidence is a screenshot showing that the SIEM successfully detected and indexed an event sent from the Kali or Windows endpoint, proving the end-to-end functionality of the system.
+* **Goal:** Wazuh Dashboard (Security Events): This image confirms the successful detection of a malicious activity. It shows multiple Logon Failure alerts (Rule ID 60122, Level 5), indicating a brute-force attempt to gain unauthorized local access to the Windows endpoint. This validates the agent's ability to monitor critical security logs and the Manager's capability to process and classify the activity according to the MITRE ATT&CK Tactic: Impact and Technique T1531 (Account Access Removal).
+   > ![](image7.png)
+
+* ### ⚠️ Troubleshooting and Remediation
+
+During the lab setup, the network IPs for the virtual machines changed (e.g., Wazuh Manager moved from 192.168.1.9 to 192.168.10.107). This caused the agents to disconnect.
+
+**Action Taken:**
+1.  Identified the new Manager IP.
+2.  Manually updated the `<address>` field in the `ossec.conf` file on both the Windows and Kali agents.
+3.  Restarted the `WazuhSvc` on Windows and `wazuh-agent` service on Kali.
+
+**Result:** Restored full connectivity, enabling the SIEM to proceed with log collection and threat detection.
     
-*(**Insert FOTO 6 here once the event appears in Discover**)*
+
 
 ---
